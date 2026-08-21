@@ -1,0 +1,13 @@
+# Azure Developer CLI (azd) project definition.
+# Run `azd up` to provision Azure infra (infra/) and deploy this service.
+name: agentic-research-platform
+metadata:
+  template: agentic-research-platform@0.1.0
+services:
+  api:
+    project: .
+    language: python
+    host: containerapp
+    docker:
+      path: Dockerfile
+      context: .

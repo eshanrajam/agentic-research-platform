@@ -1,0 +1,5 @@
+# Install the project in editable mode with dev extras.
+# This is required (not just "pip install -r") because MCP tool servers are
+# launched as `python -m agentic_platform.mcp_servers.<name>`, which needs the
+# package to be importable.
+-e .[dev]

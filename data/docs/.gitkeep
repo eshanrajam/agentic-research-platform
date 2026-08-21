@@ -1,0 +1,4 @@
+This is a placeholder so the data/docs directory is tracked by git.
+Drop .txt or .md files here, then run:
+
+    python scripts/ingest_docs.py

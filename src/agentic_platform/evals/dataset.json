@@ -1,0 +1,22 @@
+[
+  {
+    "id": "basic-math",
+    "task": "What is 17 * 24? Show your work.",
+    "must_include": ["408"]
+  },
+  {
+    "id": "research-current-event",
+    "task": "What is Microsoft Agent Framework and how does it relate to Semantic Kernel and AutoGen?",
+    "must_include": ["Semantic Kernel", "AutoGen"]
+  },
+  {
+    "id": "kb-empty-honesty",
+    "task": "According to my ingested documents, what is our Q3 revenue?",
+    "must_include": ["no relevant", "not", "haven't", "no documents", "knowledge base"]
+  },
+  {
+    "id": "coding-task",
+    "task": "Write and run Python code to compute the sum of squares from 1 to 10.",
+    "must_include": ["385"]
+  }
+]
