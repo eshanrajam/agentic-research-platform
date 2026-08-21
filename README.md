@@ -6,10 +6,6 @@ agents (Researcher, Coder, Analyst, Critic) that call out to custom **Model Cont
 observability — all built on **Microsoft Agent Framework** (the 2025/2026 successor to
 Semantic Kernel + AutoGen) and deployable to **Azure Container Apps** with a single `azd up`.
 
-> Built as a portfolio project to demonstrate the agentic-AI engineering skills employers are
-> hiring for in 2026/2027: multi-agent orchestration, MCP tooling, RAG, evals, observability,
-> and cloud-native deployment — not just "call an LLM API."
-
 ## Architecture
 
 ```mermaid
@@ -39,29 +35,26 @@ flowchart LR
 **Orchestration pattern:** a Magentic-One-style manager loop. The Orchestrator agent looks at
 the task and the running transcript, picks exactly one specialist to invoke next (JSON
 contract), and routes its own draft answer through the Critic once for a reflection pass before
-returning `FINAL`. The loop is a small, fully testable Python function — not a black box — so
-its behavior is easy to explain in an interview.
+returning `FINAL`. The loop is a small, fully testable Python function — not a black box.
 
-## Why this stands out on a resume
+## Key features
 
 - **Microsoft Agent Framework** — the actively-developed unification of Semantic Kernel +
-  AutoGen (GA 2025). Shows you're current with where Microsoft's agent stack is *actually*
-  heading, not just building a LangChain toy.
+  AutoGen (GA 2025) for building and orchestrating agents.
 - **Model Context Protocol (MCP)** — three custom MCP servers (web research, code execution,
-  knowledge base) built with the official MCP Python SDK. MCP is the emerging standard for
+  knowledge base) built with the official MCP Python SDK, the emerging standard for
   tool/agent interop across vendors.
-- **Multi-agent orchestration with reflection** — planner/specialist/critic loop, not a single
-  prompt-and-pray chatbot.
+- **Multi-agent orchestration with reflection** — planner/specialist/critic loop rather than a
+  single prompt-and-pray chatbot.
 - **RAG** — Chroma vector store + chunking + retrieval, swappable for Azure AI Search.
 - **Observability** — OpenTelemetry spans for every agent/tool/MCP call, exportable to Azure
   Monitor.
 - **Evals** — an automated eval harness (`evals/run_evals.py`) that grades the agent team
   against a task dataset, runnable in CI.
-- **Security-conscious by design** — SSRF-guarded URL fetching, opt-in (disabled by default)
-  code execution with a minimal-privilege subprocess sandbox, scoped CORS, secrets in Key Vault
-  — called out explicitly rather than glossed over.
-- **Real cloud deployment** — Dockerfile + `azd`-compatible Bicep for Azure Container Apps,
-  plus GitHub Actions CI and an optional federated-identity CD pipeline.
+- **Security-conscious design** — SSRF-guarded URL fetching, opt-in (disabled by default) code
+  execution with a minimal-privilege subprocess sandbox, scoped CORS, and secrets in Key Vault.
+- **Cloud deployment** — Dockerfile + `azd`-compatible Bicep for Azure Container Apps, plus
+  GitHub Actions CI and an optional federated-identity CD pipeline.
 
 ## Project structure
 
@@ -174,15 +167,6 @@ enable the included CI/CD workflow.
 - Stream responses over Server-Sent Events for token-by-token UI updates.
 - Add human-in-the-loop tool approval for the Coder agent.
 - Add an LLM-as-judge rubric to `evals/run_evals.py` for nuanced quality scoring.
-
-## Resume bullet ideas
-
-- *Designed and built a multi-agent AI research assistant on Microsoft Agent Framework with a
-  reflection-based orchestration loop, three custom MCP tool servers, and Chroma-backed RAG.*
-- *Implemented an automated eval harness and OpenTelemetry/Azure Monitor observability pipeline
-  for a multi-agent system; deployed via Docker + Bicep to Azure Container Apps with CI/CD.*
-- *Hardened an agentic tool-calling surface against SSRF and arbitrary code execution risks
-  with hostname validation, opt-in sandboxing, and least-privilege secret handling.*
 
 ## License
 
